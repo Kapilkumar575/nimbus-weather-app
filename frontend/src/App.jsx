@@ -25,24 +25,17 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-indigo-700 text-white flex flex-col items-center px-4 py-6 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-blue-500 via-indigo-600 to-purple-700 flex items-center justify-center p-4">
 
-      {/* Background blobs */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-blue-300 opacity-30 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-0 right-0 w-72 h-72 bg-indigo-400 opacity-30 rounded-full blur-3xl animate-pulse"></div>
-
-      {/* Container */}
-      <div className="w-full max-w-3xl z-10">
+      <div className="w-full max-w-4xl bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl p-6 text-white">
 
         {/* Header */}
-        <header className="text-center mb-6">
-          <h1 className="text-4xl font-bold flex justify-center items-center gap-2">
-            ☁ Nimbus
-          </h1>
+        <div className="text-center mb-6">
+          <h1 className="text-4xl font-bold">☁ Nimbus Weather</h1>
           <p className="text-sm opacity-80">
             Real-time weather at your fingertips
           </p>
-        </header>
+        </div>
 
         {/* Search */}
         <SearchBar
@@ -58,7 +51,7 @@ export default function App() {
         <ErrorMessage message={error} onDismiss={clearError} />
 
         {/* Content */}
-        <main className="mt-6 flex flex-col items-center gap-6">
+        <div className="mt-6 space-y-6">
 
           {loading ? (
             <LoadingSkeleton />
@@ -67,8 +60,7 @@ export default function App() {
               <CurrentWeather data={weather.current} />
               <Forecast data={weather.forecast} />
 
-              {/* Cache Info */}
-              <p className="text-xs opacity-80">
+              <p className="text-xs text-center opacity-70">
                 {weather.fromCache ? "⚡ Cached · " : ""}
                 Updated{" "}
                 {new Date(
@@ -81,13 +73,13 @@ export default function App() {
               <div className="text-center mt-10">
                 <p className="text-5xl">🌍</p>
                 <p className="mt-2">
-                  Search for a city or use your location
+                  Search a city or use your location
                 </p>
               </div>
             )
           )}
 
-        </main>
+        </div>
       </div>
     </div>
   );
